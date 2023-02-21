@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sabor_app/forgot_password/views/forgot_password_page.dart';
 // import 'package:sabor_app/counter/counter.dart';
 import 'package:sabor_app/l10n/l10n.dart';
 import 'package:sabor_app/login/views/login_page.dart';
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const LoginPage(),
+      home: const ForgotPasswordPage(),
     );
   }
 }

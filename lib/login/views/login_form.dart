@@ -10,10 +10,10 @@ class LoginForm extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Stack(
-        children: [
-          const _ContainerUp(),
-          const _ImageHeader(),
-          const CardContainer(),
+        children: const [
+          _ContainerUp(),
+          _ImageHeader(),
+          CardContainer(),
         ],
       ),
     );
@@ -41,7 +41,7 @@ class CardContainer extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
@@ -52,6 +52,9 @@ class CardContainer extends StatelessWidget {
               ),
               child: Column(
                 children: const [
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'Login',
                     style: TextStyle(
@@ -59,12 +62,21 @@ class CardContainer extends StatelessWidget {
                       fontSize: 25,
                     ),
                   ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  _LoginForm(),
                 ],
               ),
             ),
           ),
           const SizedBox(
             height: 50,
+          ),
+          const Text('OR'),
+          const Divider(
+            endIndent: 30,
+            indent: 30,
           ),
           TextButton(
             onPressed: () {},
@@ -76,10 +88,120 @@ class CardContainer extends StatelessWidget {
   }
 }
 
+class _LoginForm extends StatelessWidget {
+  const _LoginForm();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: const [
+          _EmailInput(),
+          SizedBox(
+            height: 20,
+          ),
+          _PasswordInput(),
+          SizedBox(
+            height: 20,
+          ),
+          _LoginButton(),
+          _ForgotPasswordButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class _ForgotPasswordButton extends StatelessWidget {
+  const _ForgotPasswordButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: const Text(
+        'FORGOT PASSWORD',
+        style: TextStyle(
+          decoration: TextDecoration.underline,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+}
+
+class _EmailInput extends StatelessWidget {
+  const _EmailInput();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      autocorrect: false,
+      keyboardType: TextInputType.emailAddress,
+      key: const Key('email_input_field'),
+      onChanged: (value) {},
+      decoration: InputDecoration(
+        labelText: 'Email',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        prefixIcon: const Icon(Icons.alternate_email_rounded),
+      ),
+    );
+  }
+}
+
+class _PasswordInput extends StatelessWidget {
+  const _PasswordInput();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      autocorrect: false,
+      keyboardType: TextInputType.text,
+      key: const Key('password_input_field'),
+      onChanged: (value) {},
+      decoration: InputDecoration(
+        labelText: 'Contraseña',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        prefixIcon: const Icon(Icons.lock_outline_rounded),
+      ),
+      obscureText: true,
+    );
+  }
+}
+
+class _LoginButton extends StatelessWidget {
+  const _LoginButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      child: OutlinedButton(
+        onPressed: () {},
+        style: OutlinedButton.styleFrom(
+          backgroundColor: const Color.fromRGBO(247, 198, 31, 1),
+          foregroundColor: Colors.white,
+          shape: const StadiumBorder(side: BorderSide()),
+          padding: const EdgeInsets.symmetric(vertical: 12),
+        ),
+        child: const Text(
+          'Ingresar',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _ImageHeader extends StatelessWidget {
-  const _ImageHeader({
-    super.key,
-  });
+  const _ImageHeader();
 
   @override
   Widget build(BuildContext context) {
